@@ -44,9 +44,9 @@ while True:
             break
         else:
             print("Invalid Choice! Try again...\n")   
-            break
     except Exception:
         print("Invalid input! Try again...\n") 
     except KeyboardInterrupt:
         print("Exiting...\n")
         break
+
