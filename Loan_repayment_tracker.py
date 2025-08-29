@@ -15,15 +15,21 @@ if os.path.exists(file):
 
 def store(amount):
     global principle_amount,insta
-    principle_amount=principle_amount-amount
     global insta
+    if principle_amount<=0:
+        print("Your loan amount already cleared....\n")
+        return
+        
     insta+=1
-
+    principle_amount=principle_amount-amount
     data=open (file,'a')
     date=datetime.now().strftime("%d-%m-%y")
     data.write(f"Installment {insta} | Date:{date} | paid:Rs.{amount} | Outstanding amount:Rs.{principle_amount}\n")
     data.close()
     print(f"Installment {insta}|{amount} paid | Outstanding amount rs.{principle_amount}\n")
+    if principle_amount<0:
+        print("Successfully Your loan amount yet to be cleared\n")
+
 
 def currentoutstanding(outstanding):
     print(f"Your Current outstanding amount:rs.{outstanding}\n")
@@ -49,4 +55,5 @@ while True:
     except KeyboardInterrupt:
         print("Exiting...\n")
         break
+
 
